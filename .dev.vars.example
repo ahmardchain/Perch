@@ -1,0 +1,7 @@
+# Copy to .dev.vars for `npm run dev`. Never commit the real file.
+TELEGRAM_BOT_TOKEN=123456:from-BotFather
+TELEGRAM_OWNER_ID=your-numeric-telegram-id
+TELEGRAM_WEBHOOK_SECRET=any-long-random-string
+OWNER_ADDRESS=0xYourDreamDexAccount
+# A FRESH key linked in the dreamDEX app (wallet, Link a bot, Perps). It can trade but never withdraw.
+BOT_PRIVATE_KEY=0x...

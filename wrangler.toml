@@ -1,0 +1,31 @@
+name = "perch"
+main = "src/index.ts"
+compatibility_date = "2025-09-01"
+
+# Workers KV: watched TP/SL levels, alert settings, tx evidence.
+[[kv_namespaces]]
+binding = "PERCH_KV"
+id = "25c90215cc1f4b23ba78405377f9fc56"
+
+# The guard, alerts and daily digest run every minute.
+[triggers]
+crons = ["* * * * *"]
+
+[observability]
+enabled = true
+
+[vars]
+RPC_URL = "https://api.hideki2.infra.testnet.somnia.network"
+INDEXER_URL = "https://hideki-dev.smk.somnia.host/v1/graphql"
+# Starts safe: nothing is sent until you set this to "false".
+DRY_RUN = "true"
+SLIPPAGE_BPS = "50"
+TAKE_PROFIT_PCT = "2"
+STOP_LOSS_PCT = "1"
+HEALTH_ALERT_RATIO = "1.5"
+HEALTH_CLOSE_RATIO = "1.15"
+DIGEST_HOUR_UTC = "8"
+
+# Secrets (set in the Cloudflare dashboard or with `npx wrangler secret put NAME`):
+#   TELEGRAM_BOT_TOKEN, TELEGRAM_OWNER_ID, TELEGRAM_WEBHOOK_SECRET,
+#   OWNER_ADDRESS, BOT_PRIVATE_KEY
