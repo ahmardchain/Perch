@@ -107,7 +107,9 @@ export async function runGuard(env: Env): Promise<void> {
             (paying ? `Your ${p.side} is now paying funding.` : `Your ${p.side} now earns it.`),
         );
       }
-      await putJson(env, key, st.paidSide, 7 * 24 * 3600);
+      // Write only on change: the free KV plan allows 1,000 writes a day, and a
+      // write every minute per position would use that up.
+      if (before !== st.paidSide) await putJson(env, key, st.paidSide);
     } catch {
       // Next minute.
     }
